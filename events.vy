@@ -1,5 +1,6 @@
 balances: public(HashMap[address, uint256])
 
+# Event name should start with CAPS
 event Deposit:
     amount: uint256
     sender: indexed(address)
