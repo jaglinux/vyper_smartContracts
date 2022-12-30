@@ -1,5 +1,5 @@
 totalSupply: public(uint256)
-decimals: public(uint8)
+decimals: public(uint256)
 name: public(String[20])
 symbol: public(String[20])
 owner: public(address)
@@ -7,11 +7,16 @@ balances: public(HashMap[address, uint256])
 allowances: public(HashMap[address, HashMap[address, uint256]])
 
 @external
-def __init__(_name: String[20], _symbol: String[20], _decimals: uint8):
+def __init__(_name: String[20], _symbol: String[20], _decimals: uint256):
     self.name = _name
     self.symbol = _symbol
     self.decimals = _decimals
     self.owner = msg.sender
+
+@internal
+def _mint(receiver:address, amount:uint256):
+    self.balances[receiver] += amount
+    self.totalSupply += amount
 
 @external
 # mint function is dev or user specific implementation
@@ -21,20 +26,16 @@ def mint(_receiver:address, _amount:uint256):
     assert self.owner == msg.sender, "Only Owner can mint"
     self._mint(_receiver, _amount)
 
-@internal
-def _mint(receiver:address, amount:uint256):
-    self.balances[receiver] += amount
-    self.totalSupply += amount
-
-@external 
-def transfer(_receiver:address, _amount:uint256):
-    assert self.balances[msg.sender] >= _amount, "Not enough balance"
-    self._transfer(msg.sender, _receiver, _amount)
 
 @internal
 def _transfer(_sender:address, _receiver:address, _amount:uint256):
     self.balances[_sender] -= _amount
     self.balances[_receiver] += _amount
+
+@external 
+def transfer(_receiver:address, _amount:uint256):
+    assert self.balances[msg.sender] >= _amount, "Not enough balance"
+    self._transfer(msg.sender, _receiver, _amount)
 
 @view
 @external
