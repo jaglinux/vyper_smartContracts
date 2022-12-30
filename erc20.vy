@@ -53,3 +53,10 @@ def transferFrom(_approver:address, _receiver:address,  _amount:uint256):
     assert self.balances[_approver] >= _amount, "Not enough balances"
     self._transfer(_approver, _receiver, _amount)
     self.allowances[_approver][msg.sender] -= _amount
+
+@external
+#Only owner can burn
+def burn(_amount:uint256):
+    assert self.balances[msg.sender] >= _amount, "Not enough balance"
+    self.balances[msg.sender] -= _amount
+    self.totalSupply -= _amount
