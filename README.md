@@ -15,6 +15,7 @@ def rough() -> bytes32:
 ```
 Python terminal
 ```
+>>> import boa
 >>> simple = boa.load("./simple.vy")
 >>> a = simple.rough()
 >>> hex(int.from_bytes(a, "big"))
