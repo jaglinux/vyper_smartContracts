@@ -4,10 +4,13 @@
 # The equivalent code is below. Here the argument is passed in the contract itself.
 
 # In Vyper, to assign numbers in Bytes[]
-# number: Bytes[1] = b"\x0a"
+# number_: Bytes[1] = b"\x0a"
 # In Vyper, to assign string in Bytes[]
-#       stores ascii value of 'a'
-# str: Bytes[1] = b"a"
+#       stores ascii value of 'a' i.e 0x61
+# str_: Bytes[1] = b"a"
+
+# In vyper, only numbers can be assigned to bytesM 
+# number_: bytes1 = 0x0a 
 
 result: public(address)
 a: public(Bytes[32])
