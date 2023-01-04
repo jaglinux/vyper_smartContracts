@@ -2,10 +2,11 @@
 # ExampleContract.foo("0x0000000000000000000000009f8F72aA9304c8B593d555F12eF6589cC3A579A2") is numbers in bytes format and not string,
 # check 0x at the beginning.
 # The equivalent code is below. Here the argument is passed in the contract itself.
+
 # In Vyper, to assign numbers in Bytes[]
 # number: Bytes[1] = b"\x0a"
 # In Vyper, to assign string in Bytes[]
-#stores ascii value of 'a'
+#       stores ascii value of 'a'
 # str: Bytes[1] = b"a"
 
 result: public(address)
