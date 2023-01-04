@@ -9,7 +9,7 @@
 #       stores ascii value of 'a' i.e 0x61
 # str_: Bytes[1] = b"a"
 
-# In vyper, only numbers can be assigned to bytesM 
+# In Vyper, only numbers can be assigned to bytesM 
 # number_: bytes1 = 0x0a 
 
 result: public(address)
