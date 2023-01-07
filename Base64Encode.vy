@@ -16,6 +16,11 @@ def encode(ascii: Bytes[999]) ->DynArray[String[4], 333]:
             lastBlock = True
         _block: Bytes[3] = slice(ascii,j,3)
         intBlock: uint256 = convert(_block, uint256)
-        result.append(slice(base64Set, shift(intBlock, -18), 1) )
+        local1: String[1] = slice(base64Set, shift(intBlock, -18), 1)
+        local2: String[1] = slice(base64Set, shift(intBlock, -12) & 63, 1)
+        local3: String[1] = slice(base64Set, shift(intBlock, -6) & 63, 1)
+        local4: String[1] = slice(base64Set, intBlock & 63, 1)
+        result.append(concat(local1, local2, local3, local4))
+        break
 
     return result
