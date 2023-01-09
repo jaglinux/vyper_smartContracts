@@ -37,3 +37,14 @@ def encode(ascii: Bytes[999]) ->DynArray[String[4], 333]:
             break
 
     return result
+
+# >>> c = boa.load("./base64_encode.vy")
+# >>> c.encode(b)
+# ('YQ==',)
+# >>> b = b"aa"
+# >>> c.encode(b)
+# ('YWE=',)
+# >>> c = boa.load("./base64_encode.vy")
+# >>> c.encode(b)
+# ('YWE=',)
+# >>> 
